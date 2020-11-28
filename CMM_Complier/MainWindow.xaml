@@ -1,0 +1,291 @@
+﻿<Window x:Class="CMM_Complier.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CMM_Complier"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="1920" Height="1080">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--顶部导航部分-->
+        <Grid Grid.Row="0">
+            <ToolBarTray>
+                <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                    <Button
+                        ToolTip="Follow me on Twitter"
+                        Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=KeyboardReturn}">
+                    </Button>
+                    <Button
+                        ToolTip="Save" Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=ContentSave}">
+                    </Button>
+                    <Separator />
+                    <Button
+                        Command="Cut"
+                        ToolTip="Cut"
+                        ToolBar.OverflowMode="AsNeeded" 
+                        Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=ContentCut, Size=24}">
+                    </Button>
+                    <Button
+                        Command="Copy"
+                        ToolTip="Copy that stuff"
+                        ToolBar.OverflowMode="AsNeeded" Style="{StaticResource MaterialDesignToolButton}" Content="{materialDesign:PackIcon Kind=ContentCopy}">
+                    </Button>
+                    <Button
+                        Command="Paste"
+                        ToolTip="Paste some stuff"
+                        ToolBar.OverflowMode="AsNeeded" Style="{StaticResource MaterialDesignToolButton}" Content="{materialDesign:PackIcon Kind=ContentPaste}">
+                    </Button>
+                    <Separator />
+                    <ListBox
+                        SelectedIndex="0">
+                        <ListBox.ToolTip>
+                            <StackPanel>
+                                <TextBlock
+                                    Text="MaterialDesignToolToggleFlatListBox" />
+                                <TextBlock
+                                    Text="Exclusive selection" />
+                                <TextBlock
+                                    Text="ListBoxAssist.IsToggle allows more natural toggle behaviour" />
+                            </StackPanel>
+                        </ListBox.ToolTip>
+                        <ListBoxItem Content="{materialDesign:PackIcon Kind=FormatAlignLeft}">
+                        </ListBoxItem>
+                        <ListBoxItem Content="{materialDesign:PackIcon Kind=FormatAlignCenter}">
+                        </ListBoxItem>
+                        <ListBoxItem Content="{materialDesign:PackIcon Kind=FormatAlignRight}">
+                        </ListBoxItem>
+                        <ListBoxItem Content="{materialDesign:PackIcon Kind=FormatAlignJustify}">
+                        </ListBoxItem>
+                    </ListBox>
+                    <Separator/>
+                    <ListBox
+      SelectionMode="Extended">
+                        <ListBox.ToolTip>
+                            <StackPanel>
+                                <TextBlock
+            Text="MaterialDesignToolToggleListBox" />
+                                <TextBlock
+            Text="Multiple selection" />
+                                <TextBlock
+            Text="ListBoxAssist.IsToggle allows more natural toggle behaviour" />
+                            </StackPanel>
+                        </ListBox.ToolTip>
+                        <ListBoxItem Content="{materialDesign:PackIcon Kind=DebugStepInto}">
+                        </ListBoxItem>
+                        <ListBoxItem Content="{materialDesign:PackIcon Kind=DebugStepOut}">
+                        </ListBoxItem >
+                        <ListBoxItem x:Name="UnderlineCheckbox" Content="{materialDesign:PackIcon Kind=DebugStepOver}">
+                        </ListBoxItem>
+                    </ListBox>
+                    <Separator />
+                    <Label Content="Font size:" VerticalAlignment="Center" />
+                    <ComboBox>
+                        <ComboBoxItem  Content="10" />
+                        <ComboBoxItem IsSelected="True" Content="12" />
+                        <ComboBoxItem Content="14" />
+                        <ComboBoxItem Content="16" />
+                    </ComboBox>
+                    <Button ToolTip="Take a nap" ToolBar.OverflowMode="Always">
+                        <materialDesign:PackIcon Kind="Hotel" />
+                    </Button>
+                    <Separator />
+                    <Button Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=MenuRight}"></Button>
+                    <Button Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=Bug}"></Button>
+                    <Separator />
+                    <ToggleButton/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#DD5A5858">暗黑模式</TextBlock>
+                </ToolBar>
+            </ToolBarTray>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Menu IsMainMenu="True" Background="#FFEEEEEE">
+                <MenuItem Header="_File">
+                    <MenuItem  Header="新建">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem  Header="保存" InputGestureText="Ctrl+S">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="另存为" />
+                    <MenuItem Header="退出" InputGestureText="Ctrl+E">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ExitToApp" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Dig Deeper" InputGestureText="Ctrl+D">
+                        <MenuItem Header="Enlightenment?" IsCheckable="True" />
+                        <MenuItem  Header="Disappointment" IsCheckable="True" />
+                    </MenuItem>
+                    <MenuItem Header="Look Deeper" InputGestureText="Ctrl+D">
+                        <MenuItem Header="Plain" />
+                        <MenuItem Header="Ice Cream" />
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="_Cut" Command="Cut">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentCut" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Copy" Command="Copy">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentCopy"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem  Header="_Paste" Command="Paste">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentPaste" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </Grid>
+        <!--下侧是文本和文件部分-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="960"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--文本框编写处-->
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <RichTextBox Grid.Column="2" x:Name="richTextBox">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text="RichTextBox"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <!--
+                <Grid Grid.Column="0" Background="#d4e157"></Grid>
+                <Grid Grid.Column="1" Background="#d4e157">
+                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                         VerticalAlignment="Top"
+                         Height="850"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         Margin="30,30,30,0"
+                         VerticalScrollBarVisibility="Auto"
+                         Background="#ffffff"
+                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Grid.RowSpan="2"/>
+                </Grid>
+                -->
+                <StackPanel Grid.Column="0" Background="#FFEEEEEE">
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock>1</TextBlock>
+                    <TextBlock>2</TextBlock>
+                    <TextBlock>3</TextBlock>
+                    <TextBlock>4</TextBlock>
+                </StackPanel>
+                <!--<TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                         Grid.Column="2"
+                         VerticalAlignment="Top"
+                         Height="900"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         Background="#ffffff"
+                         Margin="0,0,10,0"
+                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Grid.ColumnSpan="2" Text="#include &lt;studio.h&gt;&#xD;&#xA;void main(){&#xD;&#xA;    print(&quot;hello world!&quot;);&#xD;&#xA;}"/>-->
+            </Grid>
+            <!---->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" CanVerticallyScroll="True">
+                    <TextBlock>文件管理器</TextBlock>
+                    <TreeView MinWidth="220">
+                        <TreeViewItem Header="helloWorld">
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="16" Height="16">
+                                            <Canvas Width="24" Height="24">
+                                                <Path
+                Data="M20,10C22,13 17,22 15,22C13,22 13,21 12,21C11,21 11,22 9,22C7,22 2,13 4,10C6,7 9,7 11,8V5C5.38,8.07 4.11,3.78 4.11,3.78C4.11,3.78 6.77,0.19 11,5V3H13V8C15,7 18,7 20,10Z"
+                Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Foreground}" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock  Margin="8 0 0 0">hello
+                                        </TextBlock>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem Header="world" />
+                            <TreeViewItem Header="Grape">
+                                <TextBlock>
+									<Run Text="Grapes for us" />
+                                </TextBlock>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Peach" />
+                            <TreeViewItem Header="Pear" />
+                            <TreeViewItem Header="Strawberry" />
+                        </TreeViewItem>
+                    </TreeView>
+                </StackPanel>
+                <!--运行结果处-->
+                <StackPanel Grid.Row="1" >
+                    <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+                        <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                            <TabItem.Header>Run
+                            </TabItem.Header>
+                            <TextBlock Padding="5" TextWrapping="Wrap">
+                                <Run Text="Line 1" /><LineBreak />
+                                <LineBreak />
+                                <Run FontStyle="Italic">无法找到正确引用包</Run>
+                            </TextBlock>
+                        </TabItem>
+                        <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Background="#FFA39EAA">
+                            <TabItem.Header>Debug
+                            </TabItem.Header>
+                        </TabItem>
+                        <ListView ItemsSource="{Binding Items1}" Height="144" Width="888">
+                            <ListView.View>
+                                <GridView>
+                                    <!--该处需要保定数据-->
+                                    <GridViewColumn DisplayMemberBinding="{Binding Code}" Header="Code" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Description" />
+                                    <GridViewColumn Header="Options">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox Width="100">
+                                                    <ComboBoxItem Content="Test" />
+                                                    <ComboBoxItem Content="Test2" />
+                                                    <ComboBoxItem Content="Test3" />
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </TabControl>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
