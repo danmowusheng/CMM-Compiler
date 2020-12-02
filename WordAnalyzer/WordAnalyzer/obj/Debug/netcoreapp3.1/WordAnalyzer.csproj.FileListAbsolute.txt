@@ -1,0 +1,13 @@
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\bin\Debug\netcoreapp3.1\WordAnalyzer.exe
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\bin\Debug\netcoreapp3.1\WordAnalyzer.deps.json
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\bin\Debug\netcoreapp3.1\WordAnalyzer.runtimeconfig.json
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\bin\Debug\netcoreapp3.1\WordAnalyzer.runtimeconfig.dev.json
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\bin\Debug\netcoreapp3.1\WordAnalyzer.dll
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\bin\Debug\netcoreapp3.1\WordAnalyzer.pdb
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\obj\Debug\netcoreapp3.1\WordAnalyzer.csprojAssemblyReference.cache
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\obj\Debug\netcoreapp3.1\WordAnalyzer.AssemblyInfoInputs.cache
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\obj\Debug\netcoreapp3.1\WordAnalyzer.AssemblyInfo.cs
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\obj\Debug\netcoreapp3.1\WordAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\obj\Debug\netcoreapp3.1\WordAnalyzer.dll
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\obj\Debug\netcoreapp3.1\WordAnalyzer.pdb
+C:\Users\tp103\source\repos\WordAnalyzer\WordAnalyzer\obj\Debug\netcoreapp3.1\WordAnalyzer.genruntimeconfig.cache
