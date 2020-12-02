@@ -1,5 +1,7 @@
-﻿using System;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,82 @@ namespace CMM_Complier
         public MainWindow()
         {
             InitializeComponent();
+
         }
+
+        private void OpenFile_Clicked(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("调用开始");
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "选择文件";
+            openFileDialog.Multiselect = true;
+            //过滤文件
+            openFileDialog.Filter = "CMM|*.cmm";
+            if (!(bool)openFileDialog.ShowDialog())
+            {
+                return;
+            }
+            var filename = openFileDialog.FileName;
+            //加载文件
+            LoadFile(filename, editorRichTextbox);
+            Console.WriteLine("调用结束");
+
+        }
+        private void SaveFile_Clicked(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CMM|*.cmm";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                var filename = saveFileDialog.FileName;
+                SaveFile(filename, editorRichTextbox);
+            }
+        }
+
+        private static void LoadFile(string filename, RichTextBox richTextBox)
+        {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException();
+            }
+            if (!File.Exists(filename))
+            {
+                throw new FileNotFoundException();
+            }
+            using (FileStream stream = File.OpenRead(filename))
+            {
+                TextRange documentTextRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+                string dataFormat = DataFormats.Text;
+                string ext = System.IO.Path.GetExtension(filename);
+                if (String.Compare(ext, ".cmm", true) == 0)
+                {
+                    dataFormat = DataFormats.Text;
+                }
+                documentTextRange.Load(stream, dataFormat);
+            }
+
+        }
+
+        //保存文件
+        private static void SaveFile(string filename, RichTextBox richTextBox)
+        {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException();
+            }
+            using (FileStream stream = File.OpenWrite(filename))
+            {
+                TextRange documentTextRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+                string dataFormat = DataFormats.Text;
+                string ext = System.IO.Path.GetExtension(filename);
+                if (String.Compare(ext, ".cmm", true) == 0)
+                {
+                    dataFormat = DataFormats.Text;
+                }
+                documentTextRange.Save(stream, dataFormat);
+            }
+        }
+
+
     }
 }
