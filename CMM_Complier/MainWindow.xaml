@@ -111,31 +111,28 @@
         <Grid Grid.Row="1" >
             <Menu IsMainMenu="True" Background="#FFEEEEEE">
                 <MenuItem Header="_File">
-                    <MenuItem  Header="新建">
+                    <MenuItem  Header="新建"  >
                         <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentSave" />
+                            <materialDesign:PackIcon Kind="FolderPlusOutline" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem  Header="保存" InputGestureText="Ctrl+S">
+                    <MenuItem  Header="打开" Click="OpenFile_Clicked">
                         <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentSave" />
+                            <materialDesign:PackIcon Kind="FolderOpenOutline" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="另存为" />
-                    <MenuItem Header="退出" InputGestureText="Ctrl+E">
+                    <MenuItem  Header="保存" InputGestureText="Ctrl+S" Command="{Binding }">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentSaveOutline" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="另存为" Click="SaveFile_Clicked"/>
+                    <MenuItem Header="退出" InputGestureText="Ctrl+E" Command="{Binding}">
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="ExitToApp" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <Separator />
-                    <MenuItem Header="Dig Deeper" InputGestureText="Ctrl+D">
-                        <MenuItem Header="Enlightenment?" IsCheckable="True" />
-                        <MenuItem  Header="Disappointment" IsCheckable="True" />
-                    </MenuItem>
-                    <MenuItem Header="Look Deeper" InputGestureText="Ctrl+D">
-                        <MenuItem Header="Plain" />
-                        <MenuItem Header="Ice Cream" />
-                    </MenuItem>
+                </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Edit">
                     <MenuItem Header="_Cut" Command="Cut">
@@ -169,7 +166,7 @@
                     <ColumnDefinition Width="30"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <RichTextBox Grid.Column="2" x:Name="richTextBox">
+                <RichTextBox Grid.Column="2" x:Name="editorRichTextbox">
                     <FlowDocument>
                         <Paragraph>
                             <Run Text="RichTextBox"/>
