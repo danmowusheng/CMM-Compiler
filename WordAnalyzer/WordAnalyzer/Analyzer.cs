@@ -7,7 +7,8 @@ namespace WordAnalyzer
 {
     class Analyzer
     {
-        
+        String URL;
+        Word word;
         public HashSet<String> wordSet;
         public List<String> list;
         List<int> sideList;
@@ -15,7 +16,51 @@ namespace WordAnalyzer
         List<int> letters;
         List<int> followNum;
         StreamReader sr;
-        void initializeList(String URL) {
+        int current, next;
+        List<char> buffer;
+        int count=1;  //记录行数
+
+
+        public bool ListToFile() {
+            try
+            {
+                StreamWriter sw = new StreamWriter(Path.ChangeExtension(URL, "list"));
+                foreach (String s in list)
+                {
+                    sw.WriteLine(s);
+                }
+                sw.Flush();
+            }
+            catch(Exception e){
+                Console.WriteLine("write failed");
+                return false;
+            }
+            return true;
+        }
+
+        public bool WordSetToFile()
+        {
+            try
+            {
+                StreamWriter sw = new StreamWriter(Path.ChangeExtension(URL, "set"));
+                foreach (String s in wordSet)
+                {
+                    sw.WriteLine(s);
+                }
+                sw.Flush();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("write failed");
+                return false;
+            }
+            return true;
+        }
+
+        private void initializeList(String URL) {
+            this.URL = URL;
+            word = new Word();
+            buffer = new List<char>();
             followNum = new List<int>();
             followNum.Add(41);
             followNum.Add(32);
@@ -77,14 +122,34 @@ namespace WordAnalyzer
                 Console.WriteLine("Initialization failed\n");
                 Console.WriteLine(e);
             }
+            list.Add("L 1");
         }
 
+        private void illegalSymbolHandler() {
+            buffer.Add((char)current);
+            current = next;
+            while ((next = sr.Read()) != -1)
+            {
+                if (sideList.Contains(current))
+                {
+                    
+                    break;
+                }
+                else
+                {
+                    buffer.Add((char)current);
+                    current = next;
+                }
+            }
+            Console.WriteLine("illegal symbol '"+new String(buffer.ToArray())+"' at line "+count);
+            list.Add("IL "+new String(buffer.ToArray()));
+            buffer.Clear();
+        }
 
         public Analyzer(String URL)
         {
-            initializeList(URL);  
-            int current = sr.Read(), next;
-            List<char> buffer = new List<char>();
+            initializeList(URL);
+            current = sr.Read();
             while ((next = sr.Read()) != -1 || current!=-1) {
                 if (sideList.Contains(current))
                 {
@@ -92,28 +157,28 @@ namespace WordAnalyzer
                     {
                         if (next == 42)
                         {  //处理注解
-                            wordSet.Add("/*");
+                            wordSet.Add("S /*");
                             current = next;
                             while ((next = sr.Read()) != -1)
                             {
                                 if ((next == 47) && (current == 42))
                                 {
-                                    wordSet.Add("*/");
+                                    wordSet.Add("S */");
                                     break;
                                 }
                                 current = next;
                             }
                             if (next == -1)
                             {
-                                throw new Exception("do not find */ to match /*");
+                               Console.WriteLine("do not find */ to match /*");
                             }
                             current = sr.Read();
                             continue;
                         }
                         else
                         {
-                            list.Add("/");
-                            wordSet.Add("/");
+                            list.Add("S /");
+                            wordSet.Add("S /");
                             current = next;
                             continue;
                         }
@@ -122,15 +187,15 @@ namespace WordAnalyzer
                     {
                         if (next == 61)
                         {
-                            list.Add("==");
-                            wordSet.Add("==");
+                            list.Add("S ==");
+                            wordSet.Add("S ==");
                             current = sr.Read();
                             continue;
                         }
                         else
                         {
-                            list.Add("=");
-                            wordSet.Add("=");
+                            list.Add("S =");
+                            wordSet.Add("S =");
                             current = next;
                             continue;
                         }
@@ -139,37 +204,42 @@ namespace WordAnalyzer
                     {
                         if (next == 62)
                         {
-                            list.Add("<>");
-                            wordSet.Add("<>");
+                            list.Add("S <>");
+                            wordSet.Add("S <>");
                             current = sr.Read();
                             continue;
                         }
                         else
                         {
-                            list.Add("<");
-                            wordSet.Add("<");
+                            list.Add("S <");
+                            wordSet.Add("S <");
                             current = next;
                             continue;
                         }
                     }
                     else if (current == 9 || current == 10 || current == 13 || current==32) {
+                        if (current == 10) {
+                            count++;
+                            list.Add("L "+count.ToString());
+                        }
                         current = next;
                     }
                     else
                     {
-                        list.Add(((char)current).ToString());
-                        wordSet.Add(((char)current).ToString());
+                        list.Add("S "+((char)current).ToString());
+                        wordSet.Add("S "+((char)current).ToString());
                         current = next;
                     }
                 }
                 else if (num.Contains(current))
                 {
+                    bool flag = false;//标记是否存在小数点
                     buffer.Add((char)current);
                     current = next;
-                    if (!num.Contains(current))
+                    if (!(num.Contains(current)||current==46))
                     {
-                        list.Add(new String(buffer.ToArray()));
-                        wordSet.Add(new String(buffer.ToArray()));
+                        list.Add("C "+new String(buffer.ToArray()));
+                        wordSet.Add("C "+new String(buffer.ToArray()));
                         buffer.Clear();
                     }
                     else
@@ -185,31 +255,35 @@ namespace WordAnalyzer
                             else if (followNum.Contains(next))
                             {
                                 buffer.Add((char)current);
-                                list.Add(new String(buffer.ToArray()));
-                                wordSet.Add(new String(buffer.ToArray()));
+                                if (flag)
+                                {
+                                    list.Add("D " + new String(buffer.ToArray()));
+                                    wordSet.Add("D " + new String(buffer.ToArray()));
+                                }
+                                else
+                                {
+                                    list.Add("C " + new String(buffer.ToArray()));
+                                    wordSet.Add("C " + new String(buffer.ToArray()));
+                                }
                                 buffer.Clear();
                                 current = next;
                                 break;
                             }
+                            else if (next == 46) {
+                                if (flag)
+                                {
+                                    illegalSymbolHandler();
+                                }
+                                else {
+                                    flag = true;
+                                    buffer.Add((char)current);
+                                    current = next;
+                                    continue;
+                                }
+                            }
                             else
                             {
-                                buffer.Add((char)current);
-                                current = next;
-                                while ((next = sr.Read()) != -1)
-                                {
-                                    if (current == 9 || current == 10 || current == 32 || current == 13)
-                                    {
-                                        current = next;
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        buffer.Add((char)current);
-                                        current = next;
-                                    }
-                                }
-                                throw new Exception("illegal symbol " + buffer.ToArray());
-                                buffer.Clear();
+                                illegalSymbolHandler();
                             }
 
                         }
@@ -222,8 +296,8 @@ namespace WordAnalyzer
                     current = next;
                     if (sideList.Contains(current))
                     {
-                        list.Add(new String(buffer.ToArray()));
-                        wordSet.Add(new String(buffer.ToArray()));
+                        list.Add("I "+new String(buffer.ToArray()));
+                        wordSet.Add("I "+new String(buffer.ToArray()));
                         buffer.Clear();
                     }
                     else if (letters.Contains(next) || num.Contains(next) || next == 95)
@@ -233,11 +307,19 @@ namespace WordAnalyzer
                             if (sideList.Contains(next))
                             {
                                 buffer.Add((char)current);
-                                list.Add(new String(buffer.ToArray()));
-                                wordSet.Add(new String(buffer.ToArray()));
+                                if (word.keyword.Contains(new String(buffer.ToArray())))
+                                {
+                                    list.Add("K " + new String(buffer.ToArray()));
+                                    wordSet.Add("K " + new String(buffer.ToArray()));
+                                }
+                                else
+                                {
+                                    list.Add("I "+new String(buffer.ToArray()));
+                                    wordSet.Add("I "+new String(buffer.ToArray()));
+                                }
                                 if (current == 95)
                                 {
-                                    throw new Exception("illegal symbol " + buffer.ToArray());
+                                    Console.WriteLine("illegal symbol " + new String(buffer.ToArray()));
                                 }
                                 buffer.Clear();
                                 current = next;
@@ -250,65 +332,17 @@ namespace WordAnalyzer
                             }
                             else
                             {
-                                buffer.Add((char)current);
-                                current = next;
-                                while ((next = sr.Read()) != -1)
-                                {
-                                    if (current == 9 || current == 10 || current == 32 || current == 13)
-                                    {
-                                        current = next;
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        buffer.Add((char)current);
-                                        current = next;
-                                    }
-                                }
-                                throw new Exception("illegal symbol " + buffer.ToArray());
-                                buffer.Clear();
+                                illegalSymbolHandler();
                             }
                         }
                     }
                     else
                     {
-                        buffer.Add((char)current);
-                        current = next;
-                        while ((next = sr.Read()) != -1)
-                        {
-                            if (current == 9 || current == 10 || current == 32 || current == 13)
-                            {
-                                current = next;
-                                break;
-                            }
-                            else
-                            {
-                                buffer.Add((char)current);
-                                current = next;
-                            }
-                        }
-                        throw new Exception("illegal symbol " + buffer.ToArray());
-                        buffer.Clear();
+                        illegalSymbolHandler();
                     }
                 }
                 else {
-                    buffer.Add((char)current);
-                    current = next;
-                    while ((next = sr.Read()) != -1)
-                    {
-                        if (current == 9 || current == 10 || current == 32 || current == 13)
-                        {
-                            current = next;
-                            break;
-                        }
-                        else
-                        {
-                            buffer.Add((char)current);
-                            current = next;
-                        }
-                    }
-                    throw new Exception("illegal symbol " + buffer.ToArray());
-                    buffer.Clear();
+                    illegalSymbolHandler();
 
                 }
               

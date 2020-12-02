@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tp103\\source\\repos\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj": {}
+    "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tp103\\source\\repos\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj": {
+    "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tp103\\source\\repos\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj",
+        "projectUniqueName": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj",
         "projectName": "WordAnalyzer",
-        "projectPath": "C:\\Users\\tp103\\source\\repos\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj",
+        "projectPath": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj",
         "packagesPath": "C:\\Users\\tp103\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tp103\\source\\repos\\WordAnalyzer\\WordAnalyzer\\obj\\",
+        "outputPath": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tp103\\AppData\\Roaming\\NuGet\\NuGet.Config",
