@@ -130,9 +130,10 @@ namespace WordAnalyzer
             current = next;
             while ((next = sr.Read()) != -1)
             {
-                if (sideList.Contains(current))
+                if (sideList.Contains(next))
                 {
-                    
+                    buffer.Add((char)current);
+                    current = next;
                     break;
                 }
                 else
@@ -238,9 +239,16 @@ namespace WordAnalyzer
                     current = next;
                     if (!(num.Contains(current)||current==46))
                     {
-                        list.Add("C "+new String(buffer.ToArray()));
-                        wordSet.Add("C "+new String(buffer.ToArray()));
-                        buffer.Clear();
+                        if (sideList.Contains(current))
+                        {
+                            list.Add("C " + new String(buffer.ToArray()));
+                            wordSet.Add("C " + new String(buffer.ToArray()));
+                            buffer.Clear();
+                        }
+                        else {
+                            next = sr.Read();
+                            illegalSymbolHandler();
+                        }
                     }
                     else
                     {
@@ -273,6 +281,7 @@ namespace WordAnalyzer
                                 if (flag)
                                 {
                                     illegalSymbolHandler();
+                                    break;
                                 }
                                 else {
                                     flag = true;
@@ -284,6 +293,7 @@ namespace WordAnalyzer
                             else
                             {
                                 illegalSymbolHandler();
+                                break;
                             }
 
                         }
@@ -312,14 +322,16 @@ namespace WordAnalyzer
                                     list.Add("K " + new String(buffer.ToArray()));
                                     wordSet.Add("K " + new String(buffer.ToArray()));
                                 }
+                                else if (current == 95)
+                                {
+                                    Console.WriteLine("illegal symbol '" + new String(buffer.ToArray()) + "' at line " + count);
+                                    list.Add("IL " + new String(buffer.ToArray()));
+                                    wordSet.Add("IL " + new String(buffer.ToArray()));
+                                }
                                 else
                                 {
                                     list.Add("I "+new String(buffer.ToArray()));
                                     wordSet.Add("I "+new String(buffer.ToArray()));
-                                }
-                                if (current == 95)
-                                {
-                                    Console.WriteLine("illegal symbol " + new String(buffer.ToArray()));
                                 }
                                 buffer.Clear();
                                 current = next;
@@ -333,11 +345,13 @@ namespace WordAnalyzer
                             else
                             {
                                 illegalSymbolHandler();
+                                break;
                             }
                         }
                     }
                     else
                     {
+                        next = sr.Read();
                         illegalSymbolHandler();
                     }
                 }

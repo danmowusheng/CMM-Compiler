@@ -8,7 +8,7 @@ namespace WordAnalyzer
     {
         static void Main(string[] args)
         {
-            Analyzer a = new Analyzer("1.txt");
+            Analyzer a = new Analyzer(@"C:\Users\tp103\Desktop\1.txt");
             foreach (String b in a.list) {
                  Console.WriteLine(b);
 
