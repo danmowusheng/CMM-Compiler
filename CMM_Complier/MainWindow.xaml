@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CMM_Complier"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="MainWindow" Width="1920" Height="1080">
+    <!--Width="1920" Height="1080"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -45,28 +46,6 @@
                         ToolBar.OverflowMode="AsNeeded" Style="{StaticResource MaterialDesignToolButton}" Content="{materialDesign:PackIcon Kind=ContentPaste}">
                     </Button>
                     <Separator />
-                    <ListBox
-                        SelectedIndex="0">
-                        <ListBox.ToolTip>
-                            <StackPanel>
-                                <TextBlock
-                                    Text="MaterialDesignToolToggleFlatListBox" />
-                                <TextBlock
-                                    Text="Exclusive selection" />
-                                <TextBlock
-                                    Text="ListBoxAssist.IsToggle allows more natural toggle behaviour" />
-                            </StackPanel>
-                        </ListBox.ToolTip>
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=FormatAlignLeft}">
-                        </ListBoxItem>
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=FormatAlignCenter}">
-                        </ListBoxItem>
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=FormatAlignRight}">
-                        </ListBoxItem>
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=FormatAlignJustify}">
-                        </ListBoxItem>
-                    </ListBox>
-                    <Separator/>
                     <ListBox
       SelectionMode="Extended">
                         <ListBox.ToolTip>
@@ -110,7 +89,8 @@
         </Grid>
         <Grid Grid.Row="1" >
             <Menu IsMainMenu="True" Background="#FFEEEEEE">
-                <MenuItem Header="_File">
+                <MenuItem Header="_File" >
+
                     <MenuItem  Header="新建"  >
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="FolderPlusOutline" />
@@ -133,6 +113,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
+                
                 <MenuItem Header="_Edit">
                     <MenuItem Header="_Cut" Command="Cut">
                         <MenuItem.Icon>
@@ -155,8 +136,9 @@
         <!--下侧是文本和文件部分-->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="960"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="900"/>
+                <!--Width="960"-->
+                    <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--文本框编写处-->
             <Grid Grid.Column="0">
@@ -168,104 +150,56 @@
                 <RichTextBox Grid.Column="2" x:Name="editorRichTextbox">
                     <FlowDocument>
                         <Paragraph>
-                            <Run Text="RichTextBox"/>
+                            <Run Text="void main(){"/>
+                        </Paragraph>
+                        <Paragraph TextIndent="20">
+                            <Run Text="int x=1;"/>
+                        </Paragraph>
+                        <Paragraph TextIndent="20">
+                            <Run Text="printf(x);"/>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run Text="}"/>
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <!--
-                <Grid Grid.Column="0" Background="#d4e157"></Grid>
-                <Grid Grid.Column="1" Background="#d4e157">
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
-                         VerticalAlignment="Top"
-                         Height="850"
-                         AcceptsReturn="True"
-                         TextWrapping="Wrap"
-                         Margin="30,30,30,0"
-                         VerticalScrollBarVisibility="Auto"
-                         Background="#ffffff"
-                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Grid.RowSpan="2"/>
-                </Grid>
-                -->
+                
                 <StackPanel Grid.Column="0" Background="#FFEEEEEE">
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <TextBlock>1</TextBlock>
+                    <TextBlock></TextBlock>
                     <TextBlock>2</TextBlock>
+                    <TextBlock></TextBlock>
                     <TextBlock>3</TextBlock>
+                    <TextBlock></TextBlock>
                     <TextBlock>4</TextBlock>
                 </StackPanel>
-                <!--<TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
-                         Grid.Column="2"
-                         VerticalAlignment="Top"
-                         Height="900"
-                         AcceptsReturn="True"
-                         TextWrapping="Wrap"
-                         VerticalScrollBarVisibility="Auto"
-                         Background="#ffffff"
-                         Margin="0,0,10,0"
-                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Grid.ColumnSpan="2" Text="#include &lt;studio.h&gt;&#xD;&#xA;void main(){&#xD;&#xA;    print(&quot;hello world!&quot;);&#xD;&#xA;}"/>-->
             </Grid>
             <!---->
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="300"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" CanVerticallyScroll="True">
-                    <TextBlock>文件管理器</TextBlock>
-                    <TreeView MinWidth="220">
-                        <TreeViewItem Header="helloWorld">
-                            <TreeViewItem>
-                                <TreeViewItem.Header>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Viewbox Width="16" Height="16">
-                                            <Canvas Width="24" Height="24">
-                                                <Path
-                Data="M20,10C22,13 17,22 15,22C13,22 13,21 12,21C11,21 11,22 9,22C7,22 2,13 4,10C6,7 9,7 11,8V5C5.38,8.07 4.11,3.78 4.11,3.78C4.11,3.78 6.77,0.19 11,5V3H13V8C15,7 18,7 20,10Z"
-                Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Foreground}" />
-                                            </Canvas>
-                                        </Viewbox>
-                                        <TextBlock  Margin="8 0 0 0">hello
-                                        </TextBlock>
-                                    </StackPanel>
-                                </TreeViewItem.Header>
-                            </TreeViewItem>
-                            <TreeViewItem Header="world" />
-                            <TreeViewItem Header="Grape">
-                                <TextBlock>
-									<Run Text="Grapes for us" />
-                                </TextBlock>
-                            </TreeViewItem>
-                            <TreeViewItem Header="Peach" />
-                            <TreeViewItem Header="Pear" />
-                            <TreeViewItem Header="Strawberry" />
-                        </TreeViewItem>
-                    </TreeView>
-                </StackPanel>
+            <StackPanel Grid.Column="1">
                 <!--运行结果处-->
-                <StackPanel Grid.Row="1" >
-                    <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
-                        <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}">
-                            <TabItem.Header>Run
-                            </TabItem.Header>
-                            <TextBlock Padding="5" TextWrapping="Wrap">
-                                <Run Text="Line 1" /><LineBreak />
+                <TextBlock FontSize="16">调试区域</TextBlock>
+                <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+                    <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TabItem.Header>结果</TabItem.Header>
+                        <TextBlock Padding="5" TextWrapping="Wrap">
+                                <Run Text="运行结果" /><LineBreak />
                                 <LineBreak />
-                                <Run FontStyle="Italic">无法找到正确引用包</Run>
-                            </TextBlock>
-                        </TabItem>
-                        <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Background="#FFA39EAA">
-                            <TabItem.Header>Debug
-                            </TabItem.Header>
-                        </TabItem>
-                        <ListView ItemsSource="{Binding Items1}" Height="144" Width="888">
+                                <Run FontStyle="Italic">1</Run>
+                        </TextBlock>
+                    </TabItem>
+                    <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Background="#FFA39EAA">
+                        <TabItem.Header>变量
+                        </TabItem.Header>
+                        <ListView ItemsSource="{Binding Items1}" Height="600">
                             <ListView.View>
                                 <GridView>
                                     <!--该处需要保定数据-->
-                                    <GridViewColumn DisplayMemberBinding="{Binding Code}" Header="Code" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Description" />
-                                    <GridViewColumn Header="Options">
+                                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="名称" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Value}" Header="值" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Class}" Header="类型" />
+                                    <GridViewColumn>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <ComboBox Width="100">
@@ -279,9 +213,31 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                    </TabControl>
-                </StackPanel>
-            </Grid>
+                    </TabItem>
+                    <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Background="#FFA39EAA">
+                        <TabItem.Header>堆栈</TabItem.Header>
+                        <ListView ItemsSource="{Binding Items1}" Height="600">
+                            <ListView.View>
+                                <GridView>
+                                    <!--该处需要保定数据-->
+                                    <GridViewColumn DisplayMemberBinding="{Binding Name_1}" Header="名称" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Language}" Header="语言" />
+                                    <GridViewColumn>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox Width="100">
+                                                    <ComboBoxItem Content=">ConsoleApp1.dll!ConsoleApp1.Program.Main(string[] args) 行1" />
+                                                    <ComboBoxItem Content="CMM" />
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
