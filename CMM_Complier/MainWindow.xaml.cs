@@ -25,7 +25,11 @@ namespace CMM_Complier
         public MainWindow()
         {
             InitializeComponent();
-
+            Name = "x";
+            Value = "1";
+            Language = "CMM";
+            Class = "Int";
+            Name_1 = ">CMM.dll!CMM.Program.main() 行2";
         }
 
         private void OpenFile_Clicked(object sender, RoutedEventArgs e)
@@ -49,7 +53,7 @@ namespace CMM_Complier
         private void SaveFile_Clicked(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "CMM|*.cmm";
+            saveFileDialog.Filter = "CMM|*.cmm";       
             if (saveFileDialog.ShowDialog() == true)
             {
                 var filename = saveFileDialog.FileName;
@@ -101,6 +105,14 @@ namespace CMM_Complier
             }
         }
 
+        private void editorRichTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+        }
+        public String Value { get; set; }
+        public String Name { get; set; }
+        public String Class { get; set; }
+        public String Name_1 { get; set; }
+        public String Language { get; set; }
     }
 }
