@@ -1,0 +1,13 @@
+K int
+I main
+S (
+S )
+S {
+I i22
+S =
+D 010000.111
+S ;
+I i
+S +
+C 11
+S }
