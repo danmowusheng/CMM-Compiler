@@ -21,6 +21,90 @@ namespace WordAnalyzer
         int count=1;  //记录行数
 
 
+        public List<Token> toTokenList()
+        {
+            List<Token> tokenList = new List<Token>();
+            Token tmp;
+            int line = 0;
+            foreach (String s in list)
+            {
+                if (s.StartsWith("L"))
+                {
+                    line = int.Parse(s.Substring(2));
+                    continue;
+                }
+                else if (s.StartsWith("K"))
+                {
+                    tmp = new Token();
+                    tmp.LineNum = line;
+                    if (s.Substring(2).Equals("int"))
+                    {
+                        tmp.Type = TokenType.BASIC;
+                        tmp.Value = "int";
+                    }
+                    else if (s.Substring(2).Equals("real"))
+                    {
+                        tmp.Type = TokenType.REAL;
+                        tmp.Value = "real";
+                    }
+                    else if (s.Substring(2).Equals("if"))
+                    {
+                        tmp.Type = TokenType.IF;
+                    }
+                    else if (s.Substring(2).Equals("else"))
+                    {
+                        tmp.Type = TokenType.ELSE;
+                    }
+                    else if (s.Substring(2).Equals("write"))
+                    {
+                        tmp.Type = TokenType.WRITE;
+                    }
+                    else if (s.Substring(2).Equals("read"))
+                    {
+                        tmp.Type = TokenType.READ;
+                    }
+                    else if (s.Substring(2).Equals("while"))
+                    {
+                        tmp.Type = TokenType.WHILE;
+                    }
+                }
+                else if (s.StartsWith("S"))
+                {
+                    tmp = new Token();
+                    tmp.LineNum = line;
+                    tmp.Type = TokenType.SYMBOL;
+                    tmp.Value = s.Substring(2);
+                }
+                else if (s.StartsWith("C"))
+                {
+                    tmp = new Token();
+                    tmp.LineNum = line;
+                    tmp.Type = TokenType.INTEGER;
+                    tmp.Value = s.Substring(2);
+                }
+                else if (s.StartsWith("D"))
+                {
+                    tmp = new Token();
+                    tmp.LineNum = line;
+                    tmp.Type = TokenType.FLOAT;
+                    tmp.Value = s.Substring(2);
+                }
+                else if (s.StartsWith("IL"))
+                {
+                    throw new Exception("illegal identifier " + s.Substring(3));
+                }
+                else {
+                    tmp = new Token();
+                    tmp.LineNum = line;
+                    tmp.Type = TokenType.IDENTIFIER;
+                    tmp.Value = s.Substring(2);
+                }
+                tokenList.Add(tmp);
+            }
+            return tokenList;
+        }
+
+
         public bool ListToFile() {
             try
             {
