@@ -149,7 +149,7 @@ namespace CMM_Complier
                 range.ApplyPropertyValue(TextElement.FontWeightProperty,
                 FontWeights.Bold);
             }
-            else if(color == "purple")
+            else if(color == "Purple")
             {
                 range.ApplyPropertyValue(TextElement.ForegroundProperty,
                 new SolidColorBrush(Colors.Purple));
