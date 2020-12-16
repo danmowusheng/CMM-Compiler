@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-
 namespace WordAnalyzer
 {
     class Program
     {
         static void Main(string[] args)
         {
-             Analyzer a = new Analyzer(@"C:\Users\tp103\Desktop\2.txt");
+             Analyzer a = new Analyzer(@"test.txt");
             /* a.ListToFile();
              a.WordSetToFile();*/
             List<Token> b = a.toTokenList();
@@ -16,6 +15,10 @@ namespace WordAnalyzer
                 Console.WriteLine(s.LineNum+" "+s.Type+" "+s.Value);
             
             }
+
+            
+
+
         }
     }
 }

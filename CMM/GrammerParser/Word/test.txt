@@ -1,0 +1,14 @@
+{
+	int a;
+	int b;
+	int c;
+	a = 0;
+	b = 1.2;
+	c = a + b;
+	a = a + 1;
+	b = b + 1.5;
+	d = 5;
+	if(d==5){
+	write d;
+	}
+}
