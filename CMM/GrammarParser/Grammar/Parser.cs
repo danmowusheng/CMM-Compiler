@@ -103,6 +103,11 @@ namespace GrammerParser
         {
             try
             {
+                //用来表示程序是否正常分析完成
+                bool isEnd = false;
+                //用于记录上一次动作
+                string lastAction = null;
+
                 //消除原来所存储内容
                 //tokens.Clear();
                 StateStack = new Stack<object>();
@@ -110,6 +115,7 @@ namespace GrammerParser
                 //状态栈压入初始状态0,符号栈压入结束符号
                 StateStack.Push(0);
                 WordStack.Push("$");
+               
 
                 //进行语法分析
                 while (tokens.Count != 0)
@@ -120,6 +126,8 @@ namespace GrammerParser
                     Token current = tokens[0];
                     //根据状态栈栈顶元素和读入token查找分析表
                     int topState = (int)StateStack.Peek();
+                    //用于记录上一次动作
+                    
                     //获取动作
                     value = (string)current.Value;
 
@@ -156,28 +164,40 @@ namespace GrammerParser
 
                     if (action == " ")
                     {
+                        if (lastAction != null)
+                        {
+                            throw new ParserException("程序出现" + lastAction + "错误,  在第" + current.LineNum + "行");
+                        }                        
                         throw new ParserException("程序出现语法错误!  错误在第"+ current.LineNum+"行");
                     }
                     else if (action == "acc")
                     {
-                        Console.WriteLine("程序通过语法检查");
-                        break;
+                        //该行程序已经结束
+                        isEnd = true;
+                        tokens.Remove(current);
                     }
                     else
                     {
+                        /*
+                        if (endLineNum != 0 && current.LineNum > endLineNum)
+                        {
+                            throw new ParserException("在程序主体结束之后还有声明和定义，出现错误!");
+                        }
+                        */
                         char first = action[0];
                         //num可能是状态，也可能表示是第几条产生式
                         int num = Convert.ToInt32(action.Substring(1));
 
                         if (first == 's')
                         {
+                                                        
                             Console.WriteLine("移进" + current.Value);
                             //进行移进
                             WordStack.Push(current.Value);
                             Console.WriteLine("移进后状态为：" + num);
                             StateStack.Push(num);
                             tokens.Remove(current);
-
+                            lastAction = "移进";
                         }
                         else if (first == 'r')
                         {
@@ -201,11 +221,21 @@ namespace GrammerParser
                             int nextState = Convert.ToInt32(analysisTable[nonterminal][topState]);
                             StateStack.Push(nextState);
                             Console.WriteLine("归约后GOTO：" + nextState);
+                            lastAction = "归约";
                         }
                     }
 
                 }
-                return true;
+                if (isEnd == true)
+                {
+                    Console.WriteLine("程序通过语法检查");
+                    return true;
+                }
+                else
+                {
+                    throw new ParserException("程序语法检查异常退出, 缺少结束符号");
+                }
+                
             }
             catch (ParserException e)
             {

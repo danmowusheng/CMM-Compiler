@@ -16,6 +16,7 @@ namespace GrammerParser
             List<Token> b = a.toTokenList();
             Token endToken = new Token();
             endToken.Type = TokenType.END;
+            endToken.LineNum = b.FindLast((Token t) => t.LineNum !>=0).LineNum;
             b.Add(endToken);
             foreach (Token s in b)
             {
