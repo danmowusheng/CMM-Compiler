@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\我的学习\\我的作业\\编译原理\\课程设计\\CMM\\CMM-Compiler\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj": {}
+    "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj": {}
   },
   "projects": {
-    "E:\\我的学习\\我的作业\\编译原理\\课程设计\\CMM\\CMM-Compiler\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj": {
+    "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\我的学习\\我的作业\\编译原理\\课程设计\\CMM\\CMM-Compiler\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj",
+        "projectUniqueName": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj",
         "projectName": "WordAnalyzer",
-        "projectPath": "E:\\我的学习\\我的作业\\编译原理\\课程设计\\CMM\\CMM-Compiler\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "E:\\我的学习\\我的作业\\编译原理\\课程设计\\CMM\\CMM-Compiler\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\obj\\",
+        "projectPath": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\WordAnalyzer.csproj",
+        "packagesPath": "C:\\Users\\tp103\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\WordAnalyzer\\WordAnalyzer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tp103\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -52,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

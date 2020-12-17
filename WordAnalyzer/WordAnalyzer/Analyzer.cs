@@ -336,6 +336,9 @@ namespace WordAnalyzer
                     }
                     else
                     {
+                        if (current == 46) {
+                            flag = true;
+                        }
                         while ((next = sr.Read()) != -1)
                         {
                             if (num.Contains(next))
