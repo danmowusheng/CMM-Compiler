@@ -14,6 +14,9 @@ namespace GrammerParser
             /* a.ListToFile();
              a.WordSetToFile();*/
             List<Token> b = a.toTokenList();
+            Token endToken = new Token();
+            endToken.Type = TokenType.END;
+            b.Add(endToken);
             foreach (Token s in b)
             {
                 Console.WriteLine(s.LineNum + " " + s.Type + " " + s.Value);

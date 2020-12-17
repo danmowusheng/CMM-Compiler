@@ -34,6 +34,7 @@ namespace GrammerParser
             {
                 if (count == 1)
                 {
+                    //读取终结字符和非终结字符
                     for (int i = 1; i < line.Split(',').Length; i++)
                     {
                         string word = line.Split(',')[i];
@@ -49,13 +50,12 @@ namespace GrammerParser
                     //填充分析表
                     for (int i = 1; i < line.Split(',').Length; i++)
                     {
-
                         analysisTable[wordlist[i - 1]].Add(state, line.Split(',')[i]);
                     }
                 }
                 count++;
             }
-            Console.WriteLine("读表结束");
+            //Console.WriteLine("读表结束");
             /*
             foreach (int s in states)
             {
@@ -66,7 +66,7 @@ namespace GrammerParser
                 Console.WriteLine();
             }
             */
-            Console.WriteLine("读表成功");
+            Console.WriteLine("分析表读取成功");
         }
 
         //构造产生式
@@ -114,6 +114,7 @@ namespace GrammerParser
                 //进行语法分析
                 while (tokens.Count != 0)
                 {
+                    //value用来获取token在分析表中的符号信息
                     string value;
                     //读取token值
                     Token current = tokens[0];
@@ -122,7 +123,7 @@ namespace GrammerParser
                     //获取动作
                     value = (string)current.Value;
 
-                    //如果token的类型为int，real或者identify的类型此时需要根据类型查找表
+                    //如果token的类型为int，real或者identify和end的类型此时需要根据类型查找表
                     //下面的语句将token类型映射成表所需要的key
                     switch (current.Type)
                     {
@@ -138,9 +139,12 @@ namespace GrammerParser
                         case TokenType.BASIC:
                             value = "basic";
                             break;
+                        case TokenType.END:
+                            value = "$";
+                            break;
                     }
 
-                    if (current.Value == null)
+                    if (current.Value == null&&current.Type!=TokenType.END)
                     {
                         current.Value = Enum.GetName(typeof(TokenType), current.Type).ToLower();
                         value = (string)current.Value;
@@ -157,10 +161,12 @@ namespace GrammerParser
                     else if (action == "acc")
                     {
                         Console.WriteLine("程序通过语法检查");
+                        break;
                     }
                     else
                     {
                         char first = action[0];
+                        //num可能是状态，也可能表示是第几条产生式
                         int num = Convert.ToInt32(action.Substring(1));
 
                         if (first == 's')

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GrammerParser.Word
 {
-    enum TokenType { IF, ELSE, WHILE, READ, WRITE, BASIC, SYMBOL, INTEGER, REAL, IDENTIFIER, FLOAT }
+    enum TokenType { IF, ELSE, WHILE, READ, WRITE, BASIC, SYMBOL, INTEGER, REAL, IDENTIFIER, FLOAT, END}
     class Token
     {
         private TokenType type;

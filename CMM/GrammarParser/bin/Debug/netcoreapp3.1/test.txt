@@ -1,17 +1,9 @@
 {
-	int a;
-	int b;
-	int c;
-	int d;
-	a = 0;
-	b = 1.2;
-	c = a + b;
-	a = a + 1;
-	b = b + 1.5;
+	
+	int d;	
 	d = 5;
-	if(d==5){
+	if(d==5{
 	write d;
-	}
-
+	}}
 
 }
