@@ -161,6 +161,7 @@ namespace WordAnalyzer
             followNum.Add(10);
             followNum.Add(13);
             followNum.Add(-1);
+            followNum.Add(44);
             sideList = new List<int>();
             sideList.Add(40); // (
             sideList.Add(41); //  )
@@ -181,6 +182,7 @@ namespace WordAnalyzer
             sideList.Add(10);    //换行
             sideList.Add(13);    //回车
             sideList.Add(-1);    //结束
+            sideList.Add(44);
             num = new List<int>();
             for (int i = 48; i <= 57; i++)
             {
