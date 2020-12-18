@@ -1,0 +1,8 @@
+int main(){
+    real a;
+    real b;
+    int c;
+    int d;
+    read();
+    a = b+c+d;
+}
