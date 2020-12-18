@@ -1,243 +1,178 @@
-<Window x:Class="CMM_Complier.MainWindow"
+<Window x:Class="CMM_GUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CMM_Complier"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1920" Height="1080">
-    <!--Width="1920" Height="1080"-->
+        Title="MainWindow" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
-        <!--顶部导航部分-->
-        <Grid Grid.Row="0">
-            <ToolBarTray>
-                <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
-                    <Button
-                        ToolTip="Follow me on Twitter"
+        <ToolBarTray Margin="0,0,-0.4,0" Grid.RowSpan="2">
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}" Height="60" ClipToBounds="False" Margin="0,0,-6.4,0" >
+                <Button ToolTip="打开"
+                        Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=FolderOpenOutline}" Click="Button_Click_OpenFile">
+                </Button>
+                
+                <Button
+                        ToolTip="另存为"
+                        Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=ContentSaveMoveOutline}" Click="Button_Click_SaveFile">
+                </Button>
+                
+                <Button
+                        ToolTip="保存"
+                        Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=ContentSave}" Click="Button_Click_SaveTemp">
+                </Button>
+                
+                <Separator />
+                
+                <Button
+                        ToolTip="撤销"
                         Style="{StaticResource MaterialDesignToolButton}" 
                         Content="{materialDesign:PackIcon Kind=KeyboardReturn}">
-                    </Button>
-                    <Button
-                        ToolTip="Save" Style="{StaticResource MaterialDesignToolButton}" 
-                        Content="{materialDesign:PackIcon Kind=ContentSave}">
-                    </Button>
-                    <Separator />
-                    <Button
-                        Command="Cut"
-                        ToolTip="Cut"
+                </Button>
+                <Button
+                        ToolTip="剪切"
                         ToolBar.OverflowMode="AsNeeded" 
                         Style="{StaticResource MaterialDesignToolButton}" 
-                        Content="{materialDesign:PackIcon Kind=ContentCut, Size=24}">
-                    </Button>
-                    <Button
-                        Command="Copy"
-                        ToolTip="Copy that stuff"
+                        Content="{materialDesign:PackIcon Kind=ContentCut}">
+                </Button>
+                <Button
+                        ToolTip="复制"
                         ToolBar.OverflowMode="AsNeeded" Style="{StaticResource MaterialDesignToolButton}" Content="{materialDesign:PackIcon Kind=ContentCopy}">
-                    </Button>
-                    <Button
-                        Command="Paste"
-                        ToolTip="Paste some stuff"
+                </Button>
+                <Button
+                        ToolTip="粘贴"
                         ToolBar.OverflowMode="AsNeeded" Style="{StaticResource MaterialDesignToolButton}" Content="{materialDesign:PackIcon Kind=ContentPaste}">
-                    </Button>
-                    <Separator />
-                    <ListBox
-      SelectionMode="Extended">
-                        <ListBox.ToolTip>
-                            <StackPanel>
-                                <TextBlock
-            Text="MaterialDesignToolToggleListBox" />
-                                <TextBlock
-            Text="Multiple selection" />
-                                <TextBlock
-            Text="ListBoxAssist.IsToggle allows more natural toggle behaviour" />
-                            </StackPanel>
-                        </ListBox.ToolTip>
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=DebugStepInto}">
-                        </ListBoxItem>
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=DebugStepOut}">
-                        </ListBoxItem >
-                        <ListBoxItem x:Name="UnderlineCheckbox" Content="{materialDesign:PackIcon Kind=DebugStepOver}">
-                        </ListBoxItem>
-                    </ListBox>
-                    <Separator />
-                    <Label Content="Font size:" VerticalAlignment="Center" />
-                    <ComboBox>
-                        <ComboBoxItem  Content="10" />
-                        <ComboBoxItem IsSelected="True" Content="12" />
-                        <ComboBoxItem Content="14" />
-                        <ComboBoxItem Content="16" />
-                    </ComboBox>
-                    <Button ToolTip="Take a nap" ToolBar.OverflowMode="Always">
-                        <materialDesign:PackIcon Kind="Hotel" />
-                    </Button>
-                    <Separator />
-                    <Button Style="{StaticResource MaterialDesignToolButton}" 
-                        Content="{materialDesign:PackIcon Kind=MenuRight}"></Button>
-                    <Button Style="{StaticResource MaterialDesignToolButton}" 
-                        Content="{materialDesign:PackIcon Kind=Bug}"></Button>
-                    <Separator />
-                    <ToggleButton/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#DD5A5858">暗黑模式</TextBlock>
-                </ToolBar>
-            </ToolBarTray>
-        </Grid>
-        <Grid Grid.Row="1" >
-            <Menu IsMainMenu="True" Background="#FFEEEEEE">
-                <MenuItem Header="_File" >
+                </Button>
 
-                    <MenuItem  Header="新建"  >
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="FolderPlusOutline" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem  Header="打开" Click="OpenFile_Clicked">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="FolderOpenOutline" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem  Header="保存" InputGestureText="Ctrl+S" Command="{Binding }">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentSaveOutline" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="另存为" Click="SaveFile_Clicked"/>
-                    <MenuItem Header="退出" InputGestureText="Ctrl+E" Command="{Binding}">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ExitToApp" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-                
-                <MenuItem Header="_Edit">
-                    <MenuItem Header="_Cut" Command="Cut">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentCut" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="_Copy" Command="Copy">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentCopy"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem  Header="_Paste" Command="Paste">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentPaste" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
-        </Grid>
-        <!--下侧是文本和文件部分-->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="900"/>
-                <!--Width="960"-->
-                    <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <!--文本框编写处-->
-            <Grid Grid.Column="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <RichTextBox Grid.Column="2" x:Name="editorRichTextbox">
-                    <FlowDocument>
-                        <Paragraph>
-                            <Run Text="void main(){"/>
-                        </Paragraph>
-                        <Paragraph TextIndent="20">
-                            <Run Text="int x=1;"/>
-                        </Paragraph>
-                        <Paragraph TextIndent="20">
-                            <Run Text="printf(x);"/>
-                        </Paragraph>
-                        <Paragraph>
-                            <Run Text="}"/>
-                        </Paragraph>
-                    </FlowDocument>
-                </RichTextBox>
-                
-                <StackPanel Grid.Column="0" Background="#FFEEEEEE">
-                </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <TextBlock>1</TextBlock>
-                    <TextBlock></TextBlock>
-                    <TextBlock>2</TextBlock>
-                    <TextBlock></TextBlock>
-                    <TextBlock>3</TextBlock>
-                    <TextBlock></TextBlock>
-                    <TextBlock>4</TextBlock>
-                </StackPanel>
-            </Grid>
-            <!---->
-            <StackPanel Grid.Column="1">
-                <!--运行结果处-->
-                <TextBlock FontSize="16">调试区域</TextBlock>
-                <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
-                    <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}">
-                        <TabItem.Header>结果</TabItem.Header>
-                        <TextBlock Padding="5" TextWrapping="Wrap">
+                <Separator/>
+
+                <Label Content="Font size:" VerticalAlignment="Center" />
+                <ComboBox>
+                    <ComboBoxItem  Content="10" />
+                    <ComboBoxItem IsSelected="True" Content="12" />
+                    <ComboBoxItem Content="14" />
+                    <ComboBoxItem Content="16" />
+                </ComboBox>
+
+                <Separator />
+
+                <Button
+                        ToolTip="单步进入"
+                        ToolBar.OverflowMode="AsNeeded" Style="{StaticResource MaterialDesignToolButton}" Content="{materialDesign:PackIcon Kind=DebugStepInto}">
+                </Button>
+                <Button
+                        ToolTip="单步跳过"
+                        ToolBar.OverflowMode="AsNeeded" Style="{StaticResource MaterialDesignToolButton}" Content="{materialDesign:PackIcon Kind=DebugStepOver}">
+                </Button>
+                <Button
+                        ToolTip="单步跳出"
+                        ToolBar.OverflowMode="AsNeeded" Style="{StaticResource MaterialDesignToolButton}" Content="{materialDesign:PackIcon Kind=DebugStepOut}">
+                </Button>
+
+
+                <Separator />
+                <Button ToolTip="开始运行" Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=Play}"></Button>
+                <Button ToolTip="开始调试" Style="{StaticResource MaterialDesignToolButton}" 
+                        Content="{materialDesign:PackIcon Kind=Bug}"></Button>
+                <Separator />
+
+                <Button
+        ToolTip="词法分析中间结果" Click="Button_Click_Word">
+                    词法
+                </Button>
+                <Button
+        ToolTip="语法分析中间结果" Click="Button_Click_Grammar">
+                    语法
+                </Button>
+
+                <ToggleButton/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#DD5A5858">暗黑模式</TextBlock>
+
+            </ToolBar>
+        </ToolBarTray>
+
+        <avalonEdit:TextEditor
+            Margin="0,60,380,0" 
+            xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+            Name="editorRichTextbox" 
+            ShowLineNumbers="True"
+            SyntaxHighlighting="C++"
+            FontFamily="Consolas"
+            FontSize="10pt" Grid.RowSpan="2"/>
+
+
+        <StackPanel Margin="400,60,0,0" Grid.RowSpan="2">
+            <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <TabItem.Header>结果</TabItem.Header>
+                    <TextBlock Padding="5" TextWrapping="Wrap" Margin="0,0,0,0" Height="500" x:Name="outputTextBlock">
                                 <Run Text="运行结果" /><LineBreak />
-                                <LineBreak />
-                                <Run FontStyle="Italic">1</Run>
-                        </TextBlock>
-                    </TabItem>
-                    <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Background="#FFA39EAA">
-                        <TabItem.Header>变量
-                        </TabItem.Header>
-                        <ListView ItemsSource="{Binding Items1}" Height="600">
-                            <ListView.View>
-                                <GridView>
-                                    <!--该处需要保定数据-->
-                                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="名称" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Value}" Header="值" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Class}" Header="类型" />
-                                    <GridViewColumn>
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox Width="100">
-                                                    <ComboBoxItem Content="Test" />
-                                                    <ComboBoxItem Content="Test2" />
-                                                    <ComboBoxItem Content="Test3" />
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </TabItem>
-                    <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Background="#FFA39EAA">
-                        <TabItem.Header>堆栈</TabItem.Header>
-                        <ListView ItemsSource="{Binding Items1}" Height="600">
-                            <ListView.View>
-                                <GridView>
-                                    <!--该处需要保定数据-->
-                                    <GridViewColumn DisplayMemberBinding="{Binding Name_1}" Header="名称" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Language}" Header="语言" />
-                                    <GridViewColumn>
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox Width="100">
-                                                    <ComboBoxItem Content=">ConsoleApp1.dll!ConsoleApp1.Program.Main(string[] args) 行1" />
-                                                    <ComboBoxItem Content="CMM" />
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </TabItem>
-                </TabControl>
-            </StackPanel>
-        </Grid>
+                                <LineBreak/>
+                                <Run FontStyle="Italic" ></Run>
+                    </TextBlock>
+                </TabItem>
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Background="#FFA39EAA">
+                    <TabItem.Header>变量
+                    </TabItem.Header>
+                    <ListView ItemsSource="{Binding Items1}" Height="500">
+                        <ListView.View>
+                            <GridView>
+                                <!--该处需要保定数据-->
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="名称" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Value}" Header="值" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Class}" Header="类型" />
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox Width="100">
+                                                <ComboBoxItem Content="Test" />
+                                                <ComboBoxItem Content="Test2" />
+                                                <ComboBoxItem Content="Test3" />
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
+                <TabItem Style="{StaticResource MaterialDesignNavigationRailTabItem}" Background="#FFA39EAA">
+                    <TabItem.Header>堆栈</TabItem.Header>
+                    <ListView ItemsSource="{Binding Items1}" Height="450">
+                        <ListView.View>
+                            <GridView>
+                                <!--该处需要绑定数据-->
+                                <GridViewColumn DisplayMemberBinding="{Binding Name_1}" Header="名称" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Language}" Header="语言" />
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox Width="100">
+                                                <ComboBoxItem Content=">ConsoleApp1.dll!ConsoleApp1.Program.Main(string[] args) 行1" />
+                                                <ComboBoxItem Content="CMM" />
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
+            </TabControl>
+
+
+        </StackPanel>
+
+
     </Grid>
 </Window>
