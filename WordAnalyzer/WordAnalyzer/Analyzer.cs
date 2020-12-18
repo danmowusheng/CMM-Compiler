@@ -114,6 +114,7 @@ namespace WordAnalyzer
                     sw.WriteLine(s);
                 }
                 sw.Flush();
+                sw.Dispose();
             }
             catch(Exception e){
                 Console.WriteLine("write failed");
@@ -132,6 +133,7 @@ namespace WordAnalyzer
                     sw.WriteLine(s);
                 }
                 sw.Flush();
+                sw.Dispose();
             }
             catch (Exception e)
             {
