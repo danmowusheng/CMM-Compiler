@@ -1,0 +1,13 @@
+D:\a_projects\cmm_vm\cmm_vm\bin\Debug\netcoreapp3.1\cmm_vm.exe
+D:\a_projects\cmm_vm\cmm_vm\bin\Debug\netcoreapp3.1\cmm_vm.deps.json
+D:\a_projects\cmm_vm\cmm_vm\bin\Debug\netcoreapp3.1\cmm_vm.runtimeconfig.json
+D:\a_projects\cmm_vm\cmm_vm\bin\Debug\netcoreapp3.1\cmm_vm.runtimeconfig.dev.json
+D:\a_projects\cmm_vm\cmm_vm\bin\Debug\netcoreapp3.1\cmm_vm.dll
+D:\a_projects\cmm_vm\cmm_vm\bin\Debug\netcoreapp3.1\cmm_vm.pdb
+D:\a_projects\cmm_vm\cmm_vm\obj\Debug\netcoreapp3.1\cmm_vm.csprojAssemblyReference.cache
+D:\a_projects\cmm_vm\cmm_vm\obj\Debug\netcoreapp3.1\cmm_vm.csproj.CoreCompileInputs.cache
+D:\a_projects\cmm_vm\cmm_vm\obj\Debug\netcoreapp3.1\cmm_vm.AssemblyInfoInputs.cache
+D:\a_projects\cmm_vm\cmm_vm\obj\Debug\netcoreapp3.1\cmm_vm.AssemblyInfo.cs
+D:\a_projects\cmm_vm\cmm_vm\obj\Debug\netcoreapp3.1\cmm_vm.dll
+D:\a_projects\cmm_vm\cmm_vm\obj\Debug\netcoreapp3.1\cmm_vm.pdb
+D:\a_projects\cmm_vm\cmm_vm\obj\Debug\netcoreapp3.1\cmm_vm.genruntimeconfig.cache
