@@ -15,10 +15,11 @@ namespace SyntaxAnalyzer
         public Node() { 
         
         }
-        public Node(TokenType type,String name)
+        public Node(TokenType type,String name, int Line)
         {
             this.Type = type;
             this.Name = name;
+            this.Line = Line;
         }
         public Node(TokenType type)
         {

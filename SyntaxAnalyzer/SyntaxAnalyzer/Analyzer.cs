@@ -62,8 +62,8 @@ namespace SyntaxAnalyzer
             type.Next = new List<Node>();
             type.Next.Add(new Node(TokenType.terminal)) ;
             Node name = new Node(TokenType.terminal);
-            Node l = new Node(TokenType.terminal, "(");
-            Node r = new Node(TokenType.terminal, ")");
+            Node l = new Node(TokenType.terminal, "(",line);
+            Node r = new Node(TokenType.terminal, ")",line);
             while (count < 4) {
                 String tmp = SR.ReadLine();
                 if (tmp == null) {
@@ -80,6 +80,7 @@ namespace SyntaxAnalyzer
                     if (count == 0)
                     {
                         type.Next[0].Name = p[1];
+                        type.Line = line;
                         count++;
                     }
                     else
@@ -92,6 +93,7 @@ namespace SyntaxAnalyzer
                     if (count == 1)
                     {
                         name.Name = p[1];
+                        name.Line = line;
                         count++;
                     }
                     else
@@ -104,6 +106,7 @@ namespace SyntaxAnalyzer
                     if (count == 2)
                     {
                         l.Name = p[1];
+                        l.Line = line;
                         count++;
                     }
                     else
@@ -116,6 +119,7 @@ namespace SyntaxAnalyzer
                     if (count == 3)
                     {
                         r.Name = p[1];
+                        r.Line = line;
                         count++;
                     }
                     else
@@ -188,7 +192,7 @@ namespace SyntaxAnalyzer
                     }
                     else if (ans.StartsWith("s"))
                     {
-                        NodeStack.Push(new Node(TokenType.terminal, s[1]));
+                        NodeStack.Push(new Node(TokenType.terminal, s[1],line));
                         StateStack.Push(int.Parse(ans.Remove(0, 1)));
                         tmp = SR.ReadLine();
                     }
