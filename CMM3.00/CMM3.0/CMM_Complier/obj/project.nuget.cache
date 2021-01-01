@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "SaxlseGpPFmtPuDwhe3hppCXwNS6lBNWG0IEidn8p0GfnSF4rl7RRukDLmLQRixIepHAF4yXd0RDbPNUunc7iw==",
+  "success": true,
+  "projectFilePath": "D:\\CodeVS\\CSharp\\CMM3.00\\CMM3.0\\CMM_Complier\\CMM_Complier.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\avalonedit\\6.0.1\\avalonedit.6.0.1.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\avalonedit.sample\\5.0.3\\avalonedit.sample.5.0.3.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\carbon.json\\3.1.0\\carbon.json.3.1.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\cef.redist.x64\\86.0.24\\cef.redist.x64.86.0.24.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\cef.redist.x86\\86.0.24\\cef.redist.x86.86.0.24.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\cefsharp.common\\86.0.241\\cefsharp.common.86.0.241.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\cefsharp.wpf\\86.0.241\\cefsharp.wpf.86.0.241.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\materialdesigncolors\\1.2.7\\materialdesigncolors.1.2.7.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\materialdesignthemes\\3.2.0\\materialdesignthemes.3.2.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.0.1" />
+    <PackageReference Include="AvalonEdit.Sample" Version="5.0.3" />
+    <PackageReference Include="Carbon.Json" Version="3.1.0" />
+    <PackageReference Include="CefSharp.Wpf" Version="86.0.241" />
+    <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <Reference Update="CefSharp">
+	    <Private>true</Private>
+	  </Reference>
+	  <Reference Update="CefSharp.Core">
+	    <Private>true</Private>
+	  </Reference>
+	  <Reference Update="CefSharp.Wpf">
+	    <Private>true</Private>
+	  </Reference>
+  </ItemGroup>
+  	
+
+</Project>
