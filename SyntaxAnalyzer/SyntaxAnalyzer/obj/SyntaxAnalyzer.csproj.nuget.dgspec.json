@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tp103\\source\\repos\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj": {}
+    "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tp103\\source\\repos\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj": {
+    "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tp103\\source\\repos\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj",
+        "projectUniqueName": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj",
         "projectName": "SyntaxAnalyzer",
-        "projectPath": "C:\\Users\\tp103\\source\\repos\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj",
+        "projectPath": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj",
         "packagesPath": "C:\\Users\\tp103\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tp103\\source\\repos\\SyntaxAnalyzer\\SyntaxAnalyzer\\obj\\",
+        "outputPath": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\SyntaxAnalyzer\\SyntaxAnalyzer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tp103\\AppData\\Roaming\\NuGet\\NuGet.Config",

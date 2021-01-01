@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OSvW7ZSpxsw7zwMjNoS7KaUu5FmQLRs5FwmaZBvsIajhnPTJXCvmOeea3KFGHn9PS4zXqSQV0ClCHz79w+7F9w==",
+  "dgSpecHash": "42ZK+hMSqj05npOQnNSt0acMzmZnGVnojlMz59foUA+zpgpD22VWLGHScYKymi+/HoOHCcbixZdYlsRoLzf2/g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tp103\\source\\repos\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj",
+  "projectFilePath": "C:\\Users\\tp103\\Desktop\\CMM-Compiler\\SyntaxAnalyzer\\SyntaxAnalyzer\\SyntaxAnalyzer.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
