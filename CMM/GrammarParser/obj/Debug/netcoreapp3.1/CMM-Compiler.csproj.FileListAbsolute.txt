@@ -36,3 +36,16 @@ E:\我的学习\我的作业\编译原理\课程设计\CMM\CMM-Compiler\CMM-Comp
 E:\我的学习\我的作业\编译原理\课程设计\CMM\CMM-Compiler\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.dll
 E:\我的学习\我的作业\编译原理\课程设计\CMM\CMM-Compiler\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.pdb
 E:\我的学习\我的作业\编译原理\课程设计\CMM\CMM-Compiler\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.genruntimeconfig.cache
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\bin\Debug\netcoreapp3.1\CMM-Compiler.exe
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\bin\Debug\netcoreapp3.1\CMM-Compiler.deps.json
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\bin\Debug\netcoreapp3.1\CMM-Compiler.runtimeconfig.json
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\bin\Debug\netcoreapp3.1\CMM-Compiler.runtimeconfig.dev.json
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\bin\Debug\netcoreapp3.1\CMM-Compiler.dll
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\bin\Debug\netcoreapp3.1\CMM-Compiler.pdb
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.csprojAssemblyReference.cache
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.csproj.CoreCompileInputs.cache
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.AssemblyInfoInputs.cache
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.AssemblyInfo.cs
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.dll
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.pdb
+D:\a_projects\cmm\CMM-Compiler\CMM\GrammarParser\obj\Debug\netcoreapp3.1\CMM-Compiler.genruntimeconfig.cache

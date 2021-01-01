@@ -1,0 +1,129 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "AvalonEdit/6.0.1": {
+        "runtime": {
+          "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.dll": {
+            "assemblyVersion": "6.0.1.278",
+            "fileVersion": "6.0.1.278"
+          }
+        }
+      },
+      "AvalonEdit.Sample/5.0.3": {
+        "dependencies": {
+          "AvalonEdit": "6.0.1"
+        }
+      },
+      "cef.redist.x64/86.0.24": {},
+      "cef.redist.x86/86.0.24": {},
+      "CefSharp.Common/86.0.241": {
+        "dependencies": {
+          "cef.redist.x64": "86.0.24",
+          "cef.redist.x86": "86.0.24"
+        }
+      },
+      "CefSharp.Wpf/86.0.241": {
+        "dependencies": {
+          "CefSharp.Common": "86.0.241"
+        }
+      },
+      "MaterialDesignColors/1.2.7": {
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignColors.dll": {
+            "assemblyVersion": "1.2.7.1979",
+            "fileVersion": "1.2.7.1979"
+          }
+        }
+      },
+      "MaterialDesignThemes/3.2.0": {
+        "dependencies": {
+          "MaterialDesignColors": "1.2.7"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {
+            "assemblyVersion": "3.2.0.1979",
+            "fileVersion": "3.2.0.1979"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AvalonEdit/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JmRwKMDRUUkUGLQmTtIHiSgFSQH9567b2/55Wa/gQp+ZtxQN+mnl5Qt6B/Kgz56FMnnDyE/fV23r7J2SV+NP7g==",
+      "path": "avalonedit/6.0.1",
+      "hashPath": "avalonedit.6.0.1.nupkg.sha512"
+    },
+    "AvalonEdit.Sample/5.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WWodtFc3Zc3fxyT/6ltjRz+VCbRD6igNOI2IqQL/o9tHbHHgi2hrf0bjTw1b+q0Hik01CIeGlzZO2A04dyQCTw==",
+      "path": "avalonedit.sample/5.0.3",
+      "hashPath": "avalonedit.sample.5.0.3.nupkg.sha512"
+    },
+    "cef.redist.x64/86.0.24": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nWWcE3ztF1t6o6nE73B94XZBMnqQYgkQiCAsxLrq30Xom1wYRJr872V8K9UOjpxs9eb1gpZ9MiRelWccAGn1UA==",
+      "path": "cef.redist.x64/86.0.24",
+      "hashPath": "cef.redist.x64.86.0.24.nupkg.sha512"
+    },
+    "cef.redist.x86/86.0.24": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ot0vzt9oZfIVCE8sWkxhWvziYYCU5u6x1BhDoIsAnUNT6oD/LTA+9CUVlHI6puYXhvBfNgKfm0fa2Lmf/2dJRA==",
+      "path": "cef.redist.x86/86.0.24",
+      "hashPath": "cef.redist.x86.86.0.24.nupkg.sha512"
+    },
+    "CefSharp.Common/86.0.241": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z7QSvDVgVv7BYWVZBifGQY+OX5arKK4YEIPqsCBaKVVttyrLMCXYElxHzz6njE33zlaJ6PE/xicvN0JD7GwbGQ==",
+      "path": "cefsharp.common/86.0.241",
+      "hashPath": "cefsharp.common.86.0.241.nupkg.sha512"
+    },
+    "CefSharp.Wpf/86.0.241": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Dgx0+xRVAPrsXDjX/YLIFRs29a0TwMhHMs/ACmyhHLpeXK4S8bTs2/Y/rqaDqTsx11g42kLJW+RkD4UA6ORLfw==",
+      "path": "cefsharp.wpf/86.0.241",
+      "hashPath": "cefsharp.wpf.86.0.241.nupkg.sha512"
+    },
+    "MaterialDesignColors/1.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e+shDlaSAJcuTArqtfWjVUgAOlwQlgWq8akkzCGe1MvfV1ozmOqqXyWxg5w0vC/3/KZ84wnPUJeI1wzEpI0uJQ==",
+      "path": "materialdesigncolors/1.2.7",
+      "hashPath": "materialdesigncolors.1.2.7.nupkg.sha512"
+    },
+    "MaterialDesignThemes/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aOZQShQuV7sCWOwO98dYz1S4stmIWDBH+Q6KoR3wDiDyuG7twoGnBDzQBhrxuS16I3GQiG5nfvUjEJFVc/zdKg==",
+      "path": "materialdesignthemes/3.2.0",
+      "hashPath": "materialdesignthemes.3.2.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    }
+  }
+}
